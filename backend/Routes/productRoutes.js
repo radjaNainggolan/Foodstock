@@ -6,6 +6,10 @@ router.get('/',productController.getAllProducts);
 
 router.get('/:id',productController.getProductByID);
 
+router.get('/category/:id',productController.getProductsByCategory);
+
+router.get('/subcategory/:id',productController.getProductsBySubCategory);
+
 
 
 module.exports = router;
