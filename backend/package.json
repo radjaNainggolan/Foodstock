@@ -4,11 +4,19 @@
   "description": "Api for online food store, homework project for IT subject",
   "main": "none",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "author": "Raden Rovcanin",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1"
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "msnodesqlv8": "^2.4.8",
+    "mssql": "^8.1.1",
+    "nodemon": "^2.0.16",
+    "sequelize": "^6.19.2",
+    "tedious": "^14.5.0"
   }
 }
