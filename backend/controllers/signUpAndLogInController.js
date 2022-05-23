@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const maxAge = 60 * 60 * 24 * 3;
 require('dotenv').config();
-
+const salt = bcrypt.genSaltSync();
 
 const createToken = (id, email) => {
     return jwt.sign({ id, email }, process.env.JWT_SIGN_KEY, { expiresIn: maxAge });
@@ -18,17 +18,13 @@ const signUp = async (req, res) => {
 
     const { firstName, lastName, email, password } = req.body;
 
-    // let hashPassword;
-
     try {
-        // const salt = await bcrypt.genSalt();
-        // hashPassword = await bcrypt.hash(password, salt);
         [result, metadata] = await sequelize.query('select * from [User] as u where u.Email = ' + "'" + email + "'");
-
         if(result[0].Email == email) {
             res.status(409).json({ message:"User already exsists."});
         }
-
+        
+        let hashPassword = await bcrypt.hash(password, salt);
         let [result, metadata] = await sequelize.query(`insert into [User] values ('${firstName}','${lastName}','${email}','${hashPassword}')`);
         res.status(201).json({message:"You have successfully signed up."});
         // let ID = result[0].ID;
