@@ -12,24 +12,32 @@ const createToken = (id, email) => {
 
 const logIn = async (req, res) => {
     const {email , password} = req.body;
+    
     try{
         let [result, metadata] = await sequelize.query('select * from [User] as u where u.Email = ' + "'" + email + "'")
         
         if(result.length > 0){
-           const auth = await bcrypt.compare(password, result[0].Password);
-           if(auth){
-               const token = createToken(email, password);
-               res.status(200).json({
+            const auth = await bcrypt.compare(password, result[0].Password);
+            
+            if(auth){
+                
+                const token = createToken(email, password);
+                
+                return res.status(200).json({
                     id:result[0].ID,
                     message:"You have successfully loged in!",
                     token: token
-               });
-           }
+                });
+            
+            }else{
+                return res.status(400).json({message: "Wrong password."});
+            }
         }else{
-            res.json({message:"Please log in."});
+            return res.status(400).json({message:"User with this email does not exists."});
         }
     }catch(err){
         console.error(err);
+        return res.status(500).json({message:err.message});
     }
 
     
@@ -56,7 +64,7 @@ const signUp = async (req, res) => {
         
         const token = createToken(result[0].ID, result[0].Email);
         
-        res.status(201).json({
+        return res.status(201).json({
             id:result[0].ID,
             message:"You have successfully signed up!",
             token: token
@@ -64,8 +72,8 @@ const signUp = async (req, res) => {
     
     } catch (err) {
         console.error(err);
-        res.status(500).end({
-            messge:"Some internal server error has occured."
+        return res.status(500).json({
+            messge:err.message
         });
     }
 

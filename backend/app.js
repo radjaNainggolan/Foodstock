@@ -3,7 +3,9 @@ const dbOperations = require('./database/dbOperations');
 const sequelize = require('./database/dbOperations');
 const productRoutes = require('./Routes/productRoutes');
 const logInAndSignUpRoutes = require('./Routes/signUpAndLogInRoutes');
+const orderRoutes = require('./Routes/orderRoutes');
 const cookieParser = require('cookie-Parser');
+
 const app = express();
 
 app.use(express.json());
@@ -25,6 +27,8 @@ sequelize.authenticate()
 app.use('/products', productRoutes);
 
 app.use(logInAndSignUpRoutes);
+app.use(orderRoutes);
+
 
 
 
