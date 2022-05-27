@@ -20,7 +20,6 @@ const logIn = async (req, res) => {
             const auth = await bcrypt.compare(password, result[0].Password);
             
             if(auth){
-                
                 const token = createToken(result[0].ID, result[0].Email);
                 
                 return res.status(200).json({

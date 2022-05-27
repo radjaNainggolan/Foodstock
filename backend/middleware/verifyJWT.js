@@ -7,9 +7,9 @@ const verifyJWT = (req, res, next) => {
         jwt.verify(token, process.env.JWT_SIGN_KEY, (err, decodedToken) => {
             if(err){
                 console.error(err);
-                res.json({message: err.message});
+                res.status(400).json({message: err.message});
             }else{
-                console.log(decodedToken);
+                console.log(decodedToken.id ,decodedToken.email);
                 next();
             }
         });
