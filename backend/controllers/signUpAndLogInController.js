@@ -10,32 +10,63 @@ const createToken = (id, email) => {
 }
 
 
-const logIn = (req, res) => {
-    //console.log(process.env.JWT_SIGN_KEY);
+const logIn = async (req, res) => {
+    const {email , password} = req.body;
+    try{
+        let [result, metadata] = await sequelize.query('select * from [User] as u where u.Email = ' + "'" + email + "'")
+        
+        if(result.length > 0){
+           const auth = await bcrypt.compare(password, result[0].Password);
+           if(auth){
+               const token = createToken(email, password);
+               res.status(200).json({
+                    id:result[0].ID,
+                    message:"You have successfully loged in!",
+                    token: token
+               });
+           }
+        }else{
+            res.json({message:"Please log in."});
+        }
+    }catch(err){
+        console.error(err);
+    }
+
+    
+
 }
 
 const signUp = async (req, res) => {
 
     const { firstName, lastName, email, password } = req.body;
-
+    
     try {
-        [result, metadata] = await sequelize.query('select * from [User] as u where u.Email = ' + "'" + email + "'");
-        if(result[0].Email == email) {
-            res.status(409).json({ message:"User already exsists."});
+        let [result, metadata] = await sequelize.query('select * from [User] as u where u.Email = ' + "'" + email + "'");
+        //console.log(result);
+        
+        if(result.length > 0 && result[0].Email == email) {
+            return res.status(409).json({ message:"User already exsists."});
         }
         
         let hashPassword = await bcrypt.hash(password, salt);
-        let [result, metadata] = await sequelize.query(`insert into [User] values ('${firstName}','${lastName}','${email}','${hashPassword}')`);
-        res.status(201).json({message:"You have successfully signed up."});
-        // let ID = result[0].ID;
-        // let Email = result[0].Email;
-        // const token = createToken(result[0].ID, result[0].Email);
-
-        // res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-        // res.status(201).json({ ID: });
+        
+        [result, metadata] = await sequelize.query(`insert into [User] values ('${firstName}','${lastName}','${email}','${hashPassword}')`);
+        
+        [result, metadata] = await sequelize.query('select * from [User] as u where u.Email = ' + "'" + email + "'");
+        
+        const token = createToken(result[0].ID, result[0].Email);
+        
+        res.status(201).json({
+            id:result[0].ID,
+            message:"You have successfully signed up!",
+            token: token
+        });
+    
     } catch (err) {
         console.error(err);
-        res.status(500).send("Some internal server error has occured.");
+        res.status(500).end({
+            messge:"Some internal server error has occured."
+        });
     }
 
 }
