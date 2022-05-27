@@ -21,7 +21,7 @@ const logIn = async (req, res) => {
             
             if(auth){
                 
-                const token = createToken(email, password);
+                const token = createToken(result[0].ID, result[0].Email);
                 
                 return res.status(200).json({
                     id:result[0].ID,

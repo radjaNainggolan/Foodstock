@@ -1,9 +1,10 @@
 const express = require('express');
 const createOrderController = require('../controllers/createOrderController');
+const verifyJWT =  require('../middleware/verifyJWT');
 const router = express.Router();
 
 
-router.post('/createorder',createOrderController.createOrder);
+router.post('/createorder',verifyJWT,createOrderController.createOrder);
 
 
 
