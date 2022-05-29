@@ -1,0 +1,34 @@
+{
+  "blogs": [
+    {
+      "title": "my new webiste",
+      "body": "lorem ipsum",
+      "author": "mario",
+      "id": 1
+    },
+    {
+      "title": "my new game",
+      "body": "lorem ipsum",
+      "author": "raden",
+      "id": 2
+    },
+    {
+      "title": "my new Book",
+      "body": "lorem ipsum",
+      "author": "Anica",
+      "id": 3
+    },
+    {
+      "title": "new computer",
+      "body": "i bought new computer",
+      "author": "Mario",
+      "id": 5
+    },
+    {
+      "title": "vasilije spava",
+      "body": "spava",
+      "author": "Yoshi",
+      "id": 8
+    }
+  ]
+}
