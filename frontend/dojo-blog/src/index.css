@@ -45,7 +45,7 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 35%;
+  width: 30%;
   margin: 0 2em;
   font-family: 'Rajdhani', sans-serif;
   /* border: 1px solid black; */
@@ -57,7 +57,7 @@ body{
 .navbar-btn{
   position: relative;
   padding: .5em 1em;
-  width: 15%;
+  width: 25%;
   text-align: center;
   color: #FF6363;
   text-decoration: none;

@@ -1,5 +1,4 @@
 import {Link} from 'react-router-dom';
-import home from '../icons/home.svg';
 const NavigationBar = () => {
     return (
         <nav className="navbar">
