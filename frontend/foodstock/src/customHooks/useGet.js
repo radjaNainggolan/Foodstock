@@ -1,40 +1,34 @@
-import { useState, useEffect } from 'react';
+import axios from 'axios';
+import {useState, useEffect} from 'react';
 
-
-const useFetch = (url) => {
-
+const useGet = (url) => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(()=>{
+    useEffect(() => {
         const abortCont = new AbortController();
 
-        fetch(url, {signal: abortCont.signal})
-        .then(res =>{ 
-            if(!res.ok){
-                throw Error('Could not fetch data from that resource');
+        axios.get(url)
+        .then(res => {
+
+            if(res.status !== 200){
+                throw Error("Could not fetch data from that resource");
             }
-            return res.json();
-        })
-        .then(data => {
-            setData(data);
+            //console.log(data);
+            setData(res.data);
             setLoading(false);
             setError(null);
         })
         .catch(err => {
-            if(err.name !== 'AbortError')
-            {
+            if(err.name !== 'AbortError'){
                 setError(err.message);
                 setLoading(false);
             }
         });
-        
         return () => abortCont.abort();
-            
     },[url]);
-
     return {data, loading, error}
 }
-
-export default useFetch;
+ 
+export default useGet;
