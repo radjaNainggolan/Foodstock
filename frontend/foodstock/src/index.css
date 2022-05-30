@@ -3,9 +3,6 @@
 /* font-family: 'Alfa Slab One', cursive; */
 /* font-family: 'Rajdhani', sans-serif; */
 
-html{
-  
-}
 
 body{
   margin:0 0;
@@ -34,8 +31,6 @@ header{
   text-align: center;
 }
 
-
-
 .navbar-title{
   font-family: 'Alfa Slab One', cursive;
   font-size: 3rem;
@@ -55,51 +50,48 @@ header{
 
 .links{
   display: none;
-  
-  
 }
 
-
+.loged-in{
+  display: flex;
+  align-items: center;
+  margin: 0 0;
+}
 
 .navbar-btn{
   position: relative;
   padding: 1em 1em;
-  width: 40%;
-  text-align: center;
+  width: 90%;
+  text-align: right;
   color: #FF6363;
   text-decoration: none;
   font-size: 1.3rem;
-  font-weight: 700;
-
+  font-weight: 700;  
+  margin-bottom:.5em;
+  border-bottom: .08em solid #F8B400;
+  outline: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-width: none;
+  background: #FAF5E4;
+  font-family: 'Rajdhani', sans-serif;
+  margin: 0 0 ;
+  cursor: pointer;
 }
 
-.navbar-btn::before {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #F8B400;
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-.navbar-btn:hover::before {
-  transform: scaleX(1);
-}
 
 .drop-down-menu{
-  width:30%;
+  width:100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   position: relative;
-  background-color: #FAF5E4;
+  background: rgba(250, 245, 228, 1);
   margin-top: 0;
   border-radius: .5em;
-  border: .2em solid #125B50;
   z-index: 1000;
   float:right;
   font-family: 'Rajdhani', sans-serif;
@@ -109,8 +101,9 @@ header{
   margin: 0 1em;
 }
 
-.fade, .fade-categories{
+.fade{
   /* position: relative; */
+  height: 100%;
   z-index: 5;
 }
 
@@ -118,56 +111,159 @@ header{
   position: fixed;
   z-index: -1;
   width: 100%;
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
+  /* display:flex;
+  flex-direction:column;
+  align-items: center; */
 }
 
-.categories-list{
-  width: 100%;
-  margin: 3em auto;
-  display:grid;
-  gap: 1em 1em;
-  grid-template-columns: 40% 40%;
-  align-items: center;
-  justify-content: center;
-}
-
-.container{
-  margin: .5em auto;
-  display:flex;
+.drop-down-category{
+  width:100%;
+  height: 100%;
+  display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  
+  position: relative;
+  background: rgba(250, 245, 228, 1);
+  margin-top: 0;
+  border-radius: .5em;
+  z-index: 1000;
+  float:right;
+  font-family: 'Rajdhani', sans-serif;
 }
 
 .category{
-  display:flex;
-  flex-direction: column;
-  height: 20em;
-  align-items: center;
-  text-align: center;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 1rem;
-  color: #125B50;
+  position: relative;
+  padding: 1em 1em;
+  width: 50%;
+  text-align:center;
+  color: #FF6363;
   text-decoration: none;
-  background: #FAF5E4;
-  border-radius: .5em;
-  align-self: center;
+  font-size: 1.1rem;
+  font-weight: 700;  
+  border-bottom: .08em solid #F8B400;
+  
 }
 
-.category img{
-  width: 95%;
-  height: 15em;
-  border-radius: .5em;
-  margin: .5em .5em;
+.category:hover{
+  color:#125B50;
+}
 
+.log-in-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-family: 'Rajdhani', sans-serif;
+  color: #F8B400;
+  margin-top: 1em;
+  height: 100vh;
+  background:rgba(250, 245, 228, .6);
+  
+}
+.log-in-form{
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+label{
+  font-size: 1.5rem;
+}
+
+.log-in-image{
+  display:none;
+}
+
+.form-container{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  align-self: flex-start;
+}
+
+.form-container h3{
+  font-size: 2rem;
+}
+
+.email{
+  width:100%;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content:space-between;
+}
+
+.email-input{
+  height: 2em;
+  width: 50%;
+  border: .2em solid #125B50;
+  border-radius: .4em;
+  width:80%;
+  outline: none;
+  font-size: 1rem;
+}
+
+.password{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:space-between;
+  
+}
+
+.password-input{
+  height: 2em;
+  width: 50%;
+  border: .2em solid #125B50;
+  border-radius: .4em;
+  width:80%;
+  outline:none;
+  font-size: 1rem;
+}
+
+.submit-btn{
+  margin-top: 1em;
+  width: 30%;
+  height: 5vh;
+  outline: none;
+  font-family: 'Alfa Slab One', cursive;
+  color:#125B50;
+  background: rgba(248, 180, 0, .8);
+  cursor: pointer;
+  margin-top: 2em;
+  text-align: center;
+  border: .2em solid #125B50;
+  border-radius: .4em;
 }
 
 @media screen and (min-width: 768px) {
   .burger{
     display:none;
+  }
+
+  .drop-down-category{
+    width:40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    background: rgba(250, 245, 228, 1);
+    margin: 0 auto;
+    border-radius: .5em;
+    z-index: 1000;
+    
+    font-family: 'Rajdhani', sans-serif;
   }
 
   .links{
@@ -189,8 +285,26 @@ header{
     text-decoration: none;
     font-size: 1rem;
     font-weight: 700;
+    border-bottom: none;
   
   }
+
+  .navbar-btn::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #F8B400;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  .navbar-btn:hover::before {
+    transform: scaleX(1);
+  }
+  
 
   .categories-list{
     /* width: 90%;
@@ -217,5 +331,26 @@ header{
   .navbar-btn{
     font-size: 1.3rem;
   
+  }
+  .log-in-container{
+    background:rgba(250, 245, 228, .6);
+    padding: 2em 0;
+    
+  }
+  .log-in-image{
+    display:flex;
+    width: 50%;
+    border-radius: .2em;
+    height: 70vh;
+    align-self: flex-start;
+  }
+
+  .form-container{
+    width: 50%;
+    margin: 4em auto;
+    align-self: flex-start;
+  }
+  .form-container h3{
+    margin-top: 0;
   }
 }

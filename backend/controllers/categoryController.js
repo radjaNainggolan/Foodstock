@@ -3,7 +3,7 @@ const sequelize = require('../database/dbOperations');
 
 const getCategories = async (req, res) => {
     try{
-        let [result, metadata] = await sequelize.query('select * from Category as c inner join CategoryImage as ci on c.ID = ci.CategoryID');
+        let [result, metadata] = await sequelize.query('select * from Category');
         res.status(200).json(result);
     }catch(err){
         console.log(err);
