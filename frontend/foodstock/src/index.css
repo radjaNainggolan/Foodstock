@@ -156,12 +156,26 @@ header{
   align-items: center;
   width: 100%;
   font-family: 'Rajdhani', sans-serif;
-  color: #F8B400;
+  color: #125B50;
   margin-top: 1em;
   height: 100vh;
   background:rgba(250, 245, 228, .6);
   
 }
+
+.sign-up-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-family: 'Rajdhani', sans-serif;
+  color: #125B50;
+  margin-top: 1em;
+  height: 100vh;
+  background:rgba(250, 245, 228, .6);
+}
+
 .log-in-form{
   height: 40vh;
   width: 100%;
@@ -170,6 +184,15 @@ header{
   align-items: center;
   justify-content: space-between;
   
+}
+
+.sign-up-form{
+  height: 70vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 label{
@@ -191,6 +214,7 @@ label{
 
 .form-container h3{
   font-size: 2rem;
+  margin: .5em 0;
 }
 
 .email{
@@ -231,7 +255,6 @@ label{
 }
 
 .submit-btn{
-  margin-top: 1em;
   width: 30%;
   height: 5vh;
   outline: none;
@@ -239,7 +262,7 @@ label{
   color:#125B50;
   background: rgba(248, 180, 0, .8);
   cursor: pointer;
-  margin-top: 2em;
+  margin-top: 1em;
   text-align: center;
   border: .2em solid #125B50;
   border-radius: .4em;
@@ -262,6 +285,7 @@ label{
     margin: 0 auto;
     border-radius: .5em;
     z-index: 1000;
+    border: .2em solid #125B50;
     
     font-family: 'Rajdhani', sans-serif;
   }
@@ -334,23 +358,34 @@ label{
   }
   .log-in-container{
     background:rgba(250, 245, 228, .6);
-    padding: 2em 0;
+    padding: .5em 0;
     
   }
+
+  .sign-up-container{
+    background:rgba(250, 245, 228, .6);
+    padding: .5em 0;
+  }
+
   .log-in-image{
     display:flex;
     width: 50%;
-    border-radius: .2em;
-    height: 70vh;
+    border-radius: 1em;
+    height: 80vh;
     align-self: flex-start;
+    margin: 0 auto;
+    padding: .5em 0;
   }
 
   .form-container{
-    width: 50%;
-    margin: 4em auto;
+    width: 40%;
+    margin: 0 auto;
     align-self: flex-start;
   }
   .form-container h3{
-    margin-top: 0;
+    margin: .5em .5em;
+  }
+  .log-in-form{
+    margin-top: 1.5em;
   }
 }

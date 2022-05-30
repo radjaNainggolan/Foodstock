@@ -41,13 +41,14 @@ const LogIn = () => {
             <img src="https://wallpaperaccess.com/full/1624848.jpg" className="log-in-image" alt="" />
             <div className="form-container">
                 <h3>Log In</h3>
+                
                 <form onSubmit={handleSubmit} className="log-in-form">
                     <div className="email">
-                        <AiOutlineMail color='#125B50' size="1.5em"></AiOutlineMail>
+                        <label htmlFor="">Email</label>
                         <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="email-input" />
                     </div>
                     <div className="password">
-                        <MdPassword color='#125B50' size="1.5em"></MdPassword>
+                        <label htmlFor="">Password</label>
                         <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="password-input" />
                     </div>
                     <button className="submit-btn">Log in</button>
