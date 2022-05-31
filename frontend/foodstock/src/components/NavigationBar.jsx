@@ -26,12 +26,23 @@ const NavigationBar = () => {
                     <Hamburger toggled={isOpen} toggle={setOpen} color="#125B50" ></Hamburger>
                 </div>
                 <div className="links">
-                    <button className="navbar-btn cat" onClick={()=> setCatOpen2(!catOpen2)}>Categories</button>
+                    <Link to="/products" className="navbar-btn">All products</Link>
+                    <button 
+                        className="navbar-btn cat" 
+                        onClick={()=> setCatOpen2(!catOpen2)}
+                        >Categories
+                    </button>
                     <Link to="/" className="navbar-btn">Home</Link>
                     { logedIn ? 
-                        (   <>
+                        (   <>  
                                 <Link to={`/profile/${userID}`} className="navbar-btn">Profile</Link>
-                                <Link to="/" className="navbar-btn" onClick={() => {setLogedIn(false); window.localStorage.setItem('JWT','')}}>Log out</Link>
+                                <Link 
+                                    to="/" 
+                                    className="navbar-btn" 
+                                    onClick={() => {setLogedIn(false); window.localStorage.setItem('JWT','')}}
+                                    >
+                                    Log out
+                                </Link>
                             </>
                         ) : (
                             <>
@@ -39,7 +50,6 @@ const NavigationBar = () => {
                                 <Link to="/signup" className="navbar-btn">Sign up</Link>
                             </>
                         )
-                        
                     }
                 </div>
             </nav>
@@ -47,6 +57,7 @@ const NavigationBar = () => {
                 <Fade top when={isOpen}>
                     {isOpen && 
                         <div className="drop-down-menu" >
+                            <Link to="/products" className="navbar-btn">All products</Link>
                             <button className="navbar-btn cat" onClick={()=> setCatOpen(!catOpen)}>Categories</button>
                             {catOpen && categories &&
                                 <CategoriesLinkList categories={categories}></CategoriesLinkList>

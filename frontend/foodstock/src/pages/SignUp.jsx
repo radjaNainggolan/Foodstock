@@ -8,7 +8,6 @@ import axios from 'axios';
 const SignUp = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [userName, setUserName] = useState(''); 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -21,7 +20,6 @@ const SignUp = () => {
         const user = {
             firstName,
             lastName,
-            userName,
             email,
             password
         }
@@ -46,33 +44,28 @@ const SignUp = () => {
         <div className="form-container">
             <h3>Sign Up</h3>
             <form onSubmit={handleSubmit} className="sign-up-form">
-            <div className="email">
+                <div className="input-container">
                     {/* <AiOutlineMail color='#125B50' size="1.5em"></AiOutlineMail> */}
                     <label htmlFor="">First Name</label>
-                    <input type="text" required value={firstName} onChange={(e) => setFirstName(e.target.value)} className="email-input" />
+                    <input type="text" required value={firstName} onChange={(e) => setFirstName(e.target.value)} className="input" />
                 </div>
-                <div className="email">
+                <div className="input-container">
                     {/* <AiOutlineMail color='#125B50' size="1.5em"></AiOutlineMail> */}
                     <label htmlFor="">Last Name</label>
-                    <input type="text" required value={lastName} onChange={(e) => setLastName(e.target.value)} className="email-input" />
+                    <input type="text" required value={lastName} onChange={(e) => setLastName(e.target.value)} className="input" />
                 </div>
-                <div className="email">
-                    {/* <AiOutlineMail color='#125B50' size="1.5em"></AiOutlineMail> */}
-                    <label htmlFor="">Username</label>
-                    <input type="text" required value={userName} onChange={(e) => setUserName(e.target.value)} className="email-input" />
-                </div>
-                <div className="email">
+                <div className="input-container">
                     {/* <AiOutlineMail color='#125B50' size="1.5em"></AiOutlineMail> */}
                     <label htmlFor="">Email</label>
-                    <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="email-input" />
+                    <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="input" />
                 </div>
                 
-                <div className="password">
+                <div className="input-container">
                     {/* <MdPassword color='#125B50' size="1.5em"></MdPassword> */}
                     <label htmlFor="">Password</label>
-                    <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="password-input" />
+                    <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} className="input" />
                 </div>
-                <button className="submit-btn">Log in</button>
+                <button className="submit-btn">Sign up</button>
             </form>
         </div>
     </div>

@@ -4,6 +4,7 @@
 /* font-family: 'Rajdhani', sans-serif; */
 
 
+
 body{
   margin:0 0;
   padding:0 0;
@@ -11,11 +12,14 @@ body{
 
 header{
   margin: 0 0;
-  
+  position: relative;
+  z-index: 10;
 }
 
-.navbar{
-  display: flex;
+
+
+.navbar{ /* nav bar styles*/
+  display: flex; 
   padding-bottom: .001rem;
   align-items: center;
   justify-content: space-between;
@@ -24,14 +28,15 @@ header{
   border-bottom-right-radius: 0.7rem;
   background: #FAF5E4;
   text-align: center;
+  
 }
 
-.navbar-logo{
+.navbar-logo{ /* styles for big title and subtitle in nav bar*/
   margin: .6em 1em;
   text-align: center;
 }
 
-.navbar-title{
+.navbar-title{ /* nav bar title */
   font-family: 'Alfa Slab One', cursive;
   font-size: 3rem;
   color: #125B50;
@@ -39,7 +44,7 @@ header{
   padding: 0;
 }
 
-.navbar-subtitle{
+.navbar-subtitle{ /* nav bar subtitle */
   font-family: 'Rajdhani', sans-serif;
   margin: 0 0;
   font-size: 1.3rem;
@@ -48,7 +53,7 @@ header{
   padding: 0;
 }
 
-.links{
+.links{ /* navigation links, they are not displayed under 768px*/
   display: none;
 }
 
@@ -58,8 +63,8 @@ header{
   margin: 0 0;
 }
 
-.navbar-btn{
-  position: relative;
+.navbar-btn{  /* navigation buttons*/
+  /* position: relative; */
   padding: 1em 1em;
   width: 90%;
   text-align: right;
@@ -81,40 +86,42 @@ header{
 }
 
 
-.drop-down-menu{
+.drop-down-menu{  /*drop down menu style, displayes only under 768px when burger button is displayed*/
   width:100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  position: relative;
   background: rgba(250, 245, 228, 1);
   margin-top: 0;
   border-radius: .5em;
-  z-index: 1000;
   float:right;
   font-family: 'Rajdhani', sans-serif;
+  /* position: relative;
+  z-index: 5; */
 }
 
-.burger{
+.burger{  /* burger buttons style*, displayes only under 768px/*/
   margin: 0 1em;
 }
 
-.fade{
-  /* position: relative; */
+.fade{ /*div that wraps fade tag*/
+  position: relative;
   height: 100%;
-  z-index: 5;
+  z-index: 10;
 }
 
-.content{
-  position: fixed;
-  z-index: -1;
+.content{ /*App.js main div that will contain every page that is displayed*/
+  position: relative;
+  z-index: 1;
   width: 100%;
-  /* display:flex;
-  flex-direction:column;
+  /* display: flex;
+  flex-direction: column;
   align-items: center; */
-}
+  /* flex-direction:column;
+  align-items: center;*/
+} 
 
 .drop-down-category{
   width:100%;
@@ -127,12 +134,12 @@ header{
   background: rgba(250, 245, 228, 1);
   margin-top: 0;
   border-radius: .5em;
-  z-index: 1000;
-  float:right;
+  z-index: 5;
+  /* float:right; */
   font-family: 'Rajdhani', sans-serif;
 }
 
-.category{
+.category{ /*category buttons*/
   position: relative;
   padding: 1em 1em;
   width: 50%;
@@ -145,11 +152,11 @@ header{
   
 }
 
-.category:hover{
+.category:hover{ /*category buttons on hover*/
   color:#125B50;
 }
 
-.log-in-container{
+.log-in-container{ /*div thath wrpas whole log in form*/
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -160,10 +167,11 @@ header{
   margin-top: 1em;
   height: 100vh;
   background:rgba(250, 245, 228, .6);
+
   
 }
 
-.sign-up-container{
+.sign-up-container{ /*div thath wrpas whole sign up form*/
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -176,17 +184,16 @@ header{
   background:rgba(250, 245, 228, .6);
 }
 
-.log-in-form{
+.log-in-form{ /*div that wraps inputs and labels fields*/
   height: 40vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  
 }
 
-.sign-up-form{
+.sign-up-form{ /*div that wraps inputs and labels fields*/
   height: 70vh;
   width: 100%;
   display: flex;
@@ -199,11 +206,11 @@ label{
   font-size: 1.5rem;
 }
 
-.log-in-image{
+.log-in-image{ /*log in image will not be displayed under 768px*/
   display:none;
 }
 
-.form-container{
+.form-container{ /*div that wraps form*/
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -212,12 +219,13 @@ label{
   align-self: flex-start;
 }
 
-.form-container h3{
+.form-container h3{ /*form title*/
   font-size: 2rem;
   margin: .5em 0;
+  font-family: 'Alfa Slab One', cursive;
 }
 
-.email{
+.input-container{ /*div that wraps label and input field*/
   width:100%;
   display: flex;
   flex-direction:column;
@@ -225,76 +233,184 @@ label{
   justify-content:space-between;
 }
 
-.email-input{
+.input{  /*styles for input field*/
   height: 2em;
   width: 50%;
   border: .2em solid #125B50;
   border-radius: .4em;
   width:80%;
   outline: none;
-  font-size: 1rem;
-}
-
-.password{
-  width:100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content:space-between;
-  
-}
-
-.password-input{
-  height: 2em;
-  width: 50%;
-  border: .2em solid #125B50;
-  border-radius: .4em;
-  width:80%;
-  outline:none;
   font-size: 1rem;
 }
 
 .submit-btn{
   width: 30%;
-  height: 5vh;
+  height: 7vh;
   outline: none;
   font-family: 'Alfa Slab One', cursive;
   color:#125B50;
+  font-size: 1.5rem;
   background: rgba(248, 180, 0, .8);
   cursor: pointer;
   margin-top: 1em;
   text-align: center;
-  border: .2em solid #125B50;
+  /* border: .2em solid #125B50; */
+  border: none;
   border-radius: .4em;
+  transition: all .5s ease-out;
 }
 
-@media screen and (min-width: 768px) {
-  .burger{
+.submit-btn:hover{
+  transform: translateY(-10px);
+}
+
+.profile-container{ /*profile page container*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 1em;
+
+}
+
+.user-info{
+  background:rgba(250, 245, 228, .6);
+  border-radius: .5em;
+  width:70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  color: #F8B400;
+  padding: 2em 0;
+  height: 30vh;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.info-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.products-container{
+  margin: .5em 0;
+  background: #FAF5E4;
+  display: grid;
+  gap: 1em 2em;
+  grid-template-columns: 60%;
+  justify-content: center;
+  /* padding: 0 1em; */
+  padding: .5em 0;
+}
+
+.product-container{
+  border: .2em solid rgba(18, 91, 80,.5);
+  border-radius: .5em;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+
+}
+
+.product-container a{
+  text-decoration: none;
+}
+
+.product-container img {
+  width: 100%;
+  
+  margin: 0 auto;
+  align-self: center;
+  border-radius: .5em;
+  
+}
+
+
+.product-text h1{
+  font-family: 'Alfa Slab One', cursive;
+  font-size: 1.5rem;
+  text-align: center;
+  margin: .1em 0 ;
+  color: #125B50;
+}
+.product-text h2{
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 0;
+  color: #F8B400;
+}
+
+.product-interaction{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.product-interaction h3{
+  font-family: 'Alfa Slab One', cursive;
+  font-size: 1.5rem;
+  text-align: center;
+  margin: .1em 0 ;
+  color: #125B50;
+}
+
+.product-interaction button{
+  outline: none;
+  border:none;
+  background: rgba(255, 99, 99, .7);
+  color: white;
+  width: 30%;
+  height: 4vh;
+  border-radius: .4em;
+  cursor: pointer;
+  transition: active 1s;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1em;
+}
+.product-interaction button:active{
+  border: .2em solid #125B50;
+  
+}
+
+@media screen and (min-width: 600px){
+  .products-container{
+    grid-template-columns: 40% 40%;
+    
+  }
+}
+
+@media screen and (min-width: 768px) {  /*media query for screen with 768px min-width*/
+  .burger{ /*buerger button deos not display at min-width of 768px*/
     display:none;
   }
 
   .drop-down-category{
-    width:40%;
+    width:99%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    position: relative;
     background: rgba(250, 245, 228, 1);
     margin: 0 auto;
     border-radius: .5em;
-    z-index: 1000;
     border: .2em solid #125B50;
-    
     font-family: 'Rajdhani', sans-serif;
+    position: relative;
+    z-index: 10;
   }
 
   .links{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 45%;
+    width: 60%;
     margin: 0 2em;
     font-family: 'Rajdhani', sans-serif;
     /* border: 1px solid black; */
@@ -329,14 +445,21 @@ label{
     transform: scaleX(1);
   }
   
-
-  .categories-list{
-    /* width: 90%;
-    margin: 3em auto;
-    display:grid;
-    gap: 1em 1em; */
-    grid-template-columns: 25% 25% 25%;
+  .user-info{
+    flex-direction: row;
+    justify-content: space-evenly;
   }
+
+  .user-info{
+    width: 40%;
+    align-self: flex-start;
+    margin-left: 1em;
+  }
+
+  .products-container{
+    grid-template-columns: 30% 30% 30%;
+  }
+
 }
 
 @media screen and (min-width: 992px) {
@@ -345,7 +468,7 @@ label{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 45%;
+    width: 60%;
     margin: 0 2em;
     font-family: 'Rajdhani', sans-serif;
     /* border: 1px solid black; */
@@ -375,6 +498,7 @@ label{
     align-self: flex-start;
     margin: 0 auto;
     padding: .5em 0;
+    
   }
 
   .form-container{
@@ -388,4 +512,16 @@ label{
   .log-in-form{
     margin-top: 1.5em;
   }
+  .user-info{
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  .products-container{
+    grid-template-columns: 20% 20% 20% 20%;
+    gap: 2em 3em;
+  }
+
 }
+
+

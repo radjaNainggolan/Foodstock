@@ -7,6 +7,7 @@ const orderRoutes = require('./Routes/orderRoutes');
 const cookieParser = require('cookie-Parser');
 const categoryRoutes = require('./Routes/categoryRoutes');
 const subCategoryController = require('./Routes/subCategoryRoutes');
+const userRoutes = require('./Routes/userRoutes');
 const cors = require('cors');
 
 const app = express();
@@ -35,6 +36,7 @@ app.use(logInAndSignUpRoutes);
 app.use(orderRoutes);
 app.use(categoryRoutes);
 app.use(subCategoryController);
+app.use(userRoutes);
 
 
 
