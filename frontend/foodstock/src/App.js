@@ -1,11 +1,11 @@
 import NavigationBar from './components/NavigationBar';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Categories from './pages/Categories';
 import UserProvider from '../src/contexts/UserContext';
 import LogIn from './pages/LogIn';
 import SignUp from './pages/SignUp';
 import Profile from './pages/Profile';
 import AllProducts from './pages/AllProducts';
+import CategoryProducts from './pages/CategoryProducts';
 function App() {
   
 
@@ -21,6 +21,7 @@ function App() {
               <Route exact path="/signup" element={<SignUp/>}></Route>
               <Route exact path="/profile/:id" element={<Profile/>}></Route>
               <Route exact path="/products" element={<AllProducts/>}></Route>
+              <Route exact path="/products/category/:id" element={<CategoryProducts/>}></Route>
             </Routes>
           </div>
           <div><h1>Footer</h1></div>

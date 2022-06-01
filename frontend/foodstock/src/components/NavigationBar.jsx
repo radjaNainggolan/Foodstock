@@ -27,11 +27,7 @@ const NavigationBar = () => {
                 </div>
                 <div className="links">
                     <Link to="/products" className="navbar-btn">All products</Link>
-                    <button 
-                        className="navbar-btn cat" 
-                        onClick={()=> setCatOpen2(!catOpen2)}
-                        >Categories
-                    </button>
+                    <button className="navbar-btn cat" onClick={()=> setCatOpen2(!catOpen2)}>Categories</button>
                     <Link to="/" className="navbar-btn">Home</Link>
                     { logedIn ? 
                         (   <>  
@@ -56,7 +52,7 @@ const NavigationBar = () => {
             <div className="fade">
                 <Fade top when={isOpen}>
                     {isOpen && 
-                        <div className="drop-down-menu" >
+                        <div className="drop-down-menu">
                             <Link to="/products" className="navbar-btn">All products</Link>
                             <button className="navbar-btn cat" onClick={()=> setCatOpen(!catOpen)}>Categories</button>
                             {catOpen && categories &&

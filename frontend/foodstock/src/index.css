@@ -113,14 +113,7 @@ header{
 }
 
 .content{ /*App.js main div that will contain every page that is displayed*/
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
-  /* flex-direction:column;
-  align-items: center;*/
+  
 } 
 
 .drop-down-category{
@@ -295,7 +288,7 @@ label{
 }
 
 .products-container{
-  margin: .5em 0;
+  margin: 2em 0;
   background: #FAF5E4;
   display: grid;
   gap: 1em 2em;
@@ -306,36 +299,48 @@ label{
 }
 
 .product-container{
-  border: .2em solid rgba(18, 91, 80,.5);
+  border: .2em solid rgba(18, 91, 80,.8);
+  background: rgba(248, 180, 0,.4);
   border-radius: .5em;
-  width: 100%;
+  min-width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction:column;
   align-items: center;
+  justify-content: space-between;
+  max-height: 65vh;
+  transition: all 0.5s;
+}
 
+.product-container:hover{
+  transform: /*translateY(-5px)*/ scale(1.2);
+  
 }
 
 .product-container a{
   text-decoration: none;
+  
 }
 
 .product-container img {
   width: 100%;
-  
   margin: 0 auto;
   align-self: center;
-  border-radius: .5em;
+  border-radius: .4em;
   
 }
 
 
 .product-text h1{
   font-family: 'Alfa Slab One', cursive;
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-align: center;
-  margin: .1em 0 ;
+  margin: 0 0 ;
   color: #125B50;
+  height: 6vh;
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
 }
 .product-text h2{
   font-family: 'Rajdhani', sans-serif;
@@ -343,6 +348,7 @@ label{
   text-align: center;
   margin-top: 0;
   color: #F8B400;
+  overflow: hidden;
 }
 
 .product-interaction{
@@ -350,6 +356,7 @@ label{
   align-items: center;
   justify-content: space-around;
   width: 100%;
+  align-self: flex-end;
 }
 
 .product-interaction h3{
@@ -372,15 +379,25 @@ label{
   transition: active 1s;
   font-family: 'Rajdhani', sans-serif;
   font-size: 1em;
+  transition: border .2s ease-out;
 }
-.product-interaction button:active{
-  border: .2em solid #125B50;
+.product-interaction button:hover{
+  border: .2em solid rgba(255, 99, 99, 1);
+  
+}
+
+.loader{
+  margin: 12em auto;
+  width: 100%;
+  display:flex;
+  justify-content: space-around;
   
 }
 
 @media screen and (min-width: 600px){
   .products-container{
     grid-template-columns: 40% 40%;
+    gap: 2em 3.5em;
     
   }
 }
@@ -457,7 +474,7 @@ label{
   }
 
   .products-container{
-    grid-template-columns: 30% 30% 30%;
+    grid-template-columns: 25% 25% 25%;
   }
 
 }
@@ -468,7 +485,7 @@ label{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 60%;
+    width: 45%;
     margin: 0 2em;
     font-family: 'Rajdhani', sans-serif;
     /* border: 1px solid black; */
@@ -476,7 +493,7 @@ label{
   }
   
   .navbar-btn{
-    font-size: 1.3rem;
+    font-size: 1rem;
   
   }
   .log-in-container{

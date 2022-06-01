@@ -6,7 +6,7 @@ const CategoriesLinkList = ({categories}) => {
         <div className="drop-down-category">
             {categories.map(category => (
                 
-                <Link className="category" key={category.ID} to={`/categories/${category.ID}`}>
+                <Link className="category" key={category.ID} to={`/products/category/${category.ID}`}>
                     {category.CategoryName}
                 </Link>
                 
