@@ -410,11 +410,13 @@ label{
 }
 
 .image-and-basic-info{
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  
+  /* margin-bottom: 2em; */
 }
 
 .image-and-basic-info img{
@@ -425,18 +427,23 @@ label{
 .basic-info{
   text-align: center;
   color: #125B50;
-  font-family: 'Rajdhani', sans-serif;
+
 }
 
 .basic-info h2{
-  font-size: 3rem;
+  font-size: 1.5rem;
   margin-bottom: 0;
+  font-family: 'Alfa Slab One', cursive;
 }
 .basic-info p{
   font-size: 1.2rem;
   margin-top:0;
+  font-family: 'Rajdhani', sans-serif;
 }
 
+.price-and-btn h1{
+  font-family: 'Alfa Slab One', cursive;
+}
 .price-and-btn{
   display: flex;
   width: 70%;
@@ -464,12 +471,44 @@ label{
   border: .2em solid #F8B400;
 }
 
+.additional-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+
+}
+
+.items{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.in h2{
+  font-family: 'Alfa Slab One', cursive;
+  color:#125B50;
+}
+
+.item{
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  width: 100%;
+  justify-content: space-between;
+  color: #FF6363;
+  height: 8vh;
+}
+
 @media screen and (min-width: 600px){
   .products-container{
     grid-template-columns: 40% 40%;
     gap: 2em 3.5em;
     
   }
+
   
 }
 
@@ -548,7 +587,18 @@ label{
     grid-template-columns: 25% 25% 25%;
   }
   
+  .image-and-basic-info{
+    flex-direction: row;
+  }
 
+  .image-and-basic-info img{
+    width: 50%;
+  }
+  
+  .basic-info{
+    width: 45%;
+  }
+  
 }
 
 @media screen and (min-width: 992px) {
@@ -611,6 +661,28 @@ label{
     gap: 2em 3em;
   }
 
+  .image-and-basic-info{
+    
+    flex-direction: row;
+    width: 50%;
+  }
+
+  .additional-info{
+    width:45%;
+  }
+
+  .product-page{
+    flex-direction: row;
+    align-items: center;
+    
+  }
+  .tb{
+    flex-direction: column;
+  }
+  .row{
+    flex-direction: row;
+    width:100%;
+  }
 }
 
 

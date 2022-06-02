@@ -1,11 +1,13 @@
 import useGet from "../customHooks/useGet";
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 import Loader from "../components/Loader";
 import {BsCartPlus} from 'react-icons/bs'
 const ProductPage = () => {
 
     const {id} = useParams();
     const {data, loading, error} = useGet('http://localhost:4000/products/'+id);
+    const [open, setOpen] = useState(true);
 
     return (
         <>
@@ -23,8 +25,60 @@ const ProductPage = () => {
                             </div>
                         </div>
                     </div>
+                    
                     <div className="additional-info">
+                        <div>
+                            <button onClick={()=> setOpen(true)}>Nutritional values</button>
+                            <button onClick={()=> setOpen(false)}>Product info</button>
+                        </div>
+                        {open ? 
+                        (
+                            <div className="in">
+                                <h2>Nutritional values at 100g/ml</h2>
+                                <div className="items">
+                                    <div className="item">
+                                        <label htmlFor="">Energy :</label>
+                                        <p>{data[0].Energy} kJ/kcal</p>
+                                    </div>
+                                    <div className="item">
+                                        <label htmlFor="">Fats :</label>
+                                        <p>{data[0].Fats} g</p>
+                                    </div>
+                                    <div className="item">
+                                        <label htmlFor="">Saturated fats :</label>
+                                        <p>{data[0].SaturatedFats} g</p>
+                                    </div>
+                                    <div className="item">
+                                        <label htmlFor="">Protein :</label>
+                                        <p>{data[0].Protein} g</p>
+                                    </div>
+                                    <div className="item">
+                                        <label htmlFor="">Carbonhydrates :</label>
+                                        <p>{data[0].Carbonhydrates} g</p>
+                                    </div>
+                                    <div className="item">
+                                        <label htmlFor="">Sugar :</label>
+                                        <p>{data[0].Sugar} g</p>
+                                    </div>
+                                    <div className="item">
+                                        <label htmlFor="">Fibers :</label>
+                                        <p>{data[0].Fibers} g</p>
+                                    </div>
+                                    <div className="item">
+                                        <label htmlFor="">Salt :</label>
+                                        <p>{data[0].Salt} g</p>
+                                    </div>
 
+                                </div>
+                            </div>
+
+                        ):(
+
+                            <div className="add-info">
+
+                            </div>
+                        )
+                        }
                     </div>
 
                 </div>
