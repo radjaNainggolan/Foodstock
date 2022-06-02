@@ -374,7 +374,7 @@ label{
 .product-interaction button{
   outline: none;
   border:none;
-  background: rgba(255, 99, 99, .7);
+  background: #FF6363;
   color: white;
   width: 30%;
   height: 100%;
@@ -383,10 +383,10 @@ label{
   transition: active 1s;
   font-family: 'Rajdhani', sans-serif;
   font-size: 1em;
-  transition: border .2s ease-out;
+  transition: border .2s ease-in;
 }
 .product-interaction button:hover{
-  border: .2em solid rgba(255, 99, 99, 1);
+  border: .2em solid #F8B400;
   
 }
 
@@ -396,6 +396,72 @@ label{
   display:flex;
   justify-content: space-around;
   
+}
+
+.product-page{
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-items: center;
+  margin: 1em 0;
+  background: #FAF5E4;
+  border-radius: .5em;
+  padding: 1em .5em;
+}
+
+.image-and-basic-info{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-and-basic-info img{
+  width:80%;
+  border-radius: .5em;
+}
+
+.basic-info{
+  text-align: center;
+  color: #125B50;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.basic-info h2{
+  font-size: 3rem;
+  margin-bottom: 0;
+}
+.basic-info p{
+  font-size: 1.2rem;
+  margin-top:0;
+}
+
+.price-and-btn{
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.price-and-btn button{
+  outline: none;
+  border:none;
+  background: #FF6363;
+  color: white;
+  width: 40%;
+  height: 8vh;
+  border-radius: .4em;
+  cursor: pointer;
+  transition: active 1s;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1em;
+  transition: border .1s linear;
+}
+
+.price-and-btn button:hover{
+  border: .2em solid #F8B400;
 }
 
 @media screen and (min-width: 600px){
