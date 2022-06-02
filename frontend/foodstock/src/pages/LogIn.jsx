@@ -1,6 +1,3 @@
-
-import { AiOutlineMail } from 'react-icons/ai';
-import {MdPassword} from 'react-icons/md'
 import { useState , useContext} from "react";
 import {useNavigate} from "react-router-dom";
 import { UserContext } from '../contexts/UserContext';

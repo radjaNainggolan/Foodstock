@@ -4,7 +4,6 @@ import Loader from "../components/Loader";
 const AllProducts = () => {
     
     const {data, loading, error} = useGet('http://localhost:4000/products');
-    console.log(data);
     return (
         <>  
             <Loader loading={loading}></Loader>

@@ -12,8 +12,8 @@ const NavigationBar = () => {
     const [catOpen, setCatOpen] = useState(false);
     const [catOpen2, setCatOpen2] = useState(false);
     const context = useContext(UserContext);
-    const {userID, setUserID, logedIn, setLogedIn} = context;
-    let {data:categories, loading, error} = useGet('http://localhost:4000/categories');
+    const {userID, logedIn, setLogedIn} = context;
+    let {data:categories} = useGet('http://localhost:4000/categories');
     
     return (
         <header>

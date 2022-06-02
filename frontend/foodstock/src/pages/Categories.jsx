@@ -6,7 +6,6 @@ const Categories = () => {
 
     return (
         <div className="container">
-
             {categories && <CategoriesLinkList categories={categories}></CategoriesLinkList>}
         </div>
         

@@ -6,6 +6,7 @@ import SignUp from './pages/SignUp';
 import Profile from './pages/Profile';
 import AllProducts from './pages/AllProducts';
 import CategoryProducts from './pages/CategoryProducts';
+import ProductPage from './pages/ProductPage';
 function App() {
   
 
@@ -22,6 +23,7 @@ function App() {
               <Route exact path="/profile/:id" element={<Profile/>}></Route>
               <Route exact path="/products" element={<AllProducts/>}></Route>
               <Route exact path="/products/category/:id" element={<CategoryProducts/>}></Route>
+              <Route exact path="/product/:id" element={<ProductPage/>}></Route>
             </Routes>
           </div>
           <div><h1>Footer</h1></div>

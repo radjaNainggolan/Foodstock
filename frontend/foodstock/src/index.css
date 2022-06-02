@@ -291,15 +291,16 @@ label{
   margin: 2em 0;
   background: #FAF5E4;
   display: grid;
-  gap: 1em 2em;
+  gap: 2em 2em;
   grid-template-columns: 60%;
   justify-content: center;
   /* padding: 0 1em; */
   padding: .5em 0;
+  height:100%;
 }
 
 .product-container{
-  border: .2em solid rgba(18, 91, 80,.8);
+  /* border: .2em solid rgba(18, 91, 80,.8); */
   background: rgba(248, 180, 0,.4);
   border-radius: .5em;
   min-width: 100%;
@@ -308,12 +309,15 @@ label{
   flex-direction:column;
   align-items: center;
   justify-content: space-between;
-  max-height: 65vh;
+  /* height: 100%; */
   transition: all 0.5s;
+  padding-bottom: .5em;
 }
 
+
+
 .product-container:hover{
-  transform: /*translateY(-5px)*/ scale(1.2);
+  transform: /*translateY(-5px)*/ scale(1.03);
   
 }
 
@@ -332,12 +336,12 @@ label{
 
 
 .product-text h1{
-  font-family: 'Alfa Slab One', cursive;
-  font-size: 1rem;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.2rem;
   text-align: center;
   margin: 0 0 ;
   color: #125B50;
-  height: 6vh;
+  /* height: 6vh; */
   width: 90%;
   margin: 0 auto;
   overflow: hidden;
@@ -347,7 +351,7 @@ label{
   font-size: 1rem;
   text-align: center;
   margin-top: 0;
-  color: #F8B400;
+  color: #FF6363;
   overflow: hidden;
 }
 
@@ -373,7 +377,7 @@ label{
   background: rgba(255, 99, 99, .7);
   color: white;
   width: 30%;
-  height: 4vh;
+  height: 100%;
   border-radius: .4em;
   cursor: pointer;
   transition: active 1s;
@@ -400,6 +404,7 @@ label{
     gap: 2em 3.5em;
     
   }
+  
 }
 
 @media screen and (min-width: 768px) {  /*media query for screen with 768px min-width*/
@@ -476,6 +481,7 @@ label{
   .products-container{
     grid-template-columns: 25% 25% 25%;
   }
+  
 
 }
 
