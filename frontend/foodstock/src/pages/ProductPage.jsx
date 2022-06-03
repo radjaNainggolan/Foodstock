@@ -75,12 +75,52 @@ const ProductPage = () => {
                         ):(
 
                             <div className="add-info">
-
+                                <h2>Product information</h2>
+                                <div className="items">
+                                    <div className="item">
+                                        <label htmlFor="">Storage :</label>
+                                        <p>{data[0].Storage}</p>
+                                    </div>
+                                
+                                    <div className="item">
+                                        <label htmlFor="">Made in :</label>
+                                        <p>{data[0].MadeIn}</p>
+                                    </div>
+                                    
+                                    <div className="item">
+                                        <label htmlFor="">Producer :</label>
+                                        <p>{data[0].Producer}</p>
+                                    </div>
+                                    
+                                    <div className="item">
+                                        <label htmlFor="">Import :</label>
+                                        <p>{data[0].Import}</p>
+                                    </div>
+                                    
+                                    <div className="item">
+                                        <label htmlFor="">Ingredients :</label>
+                                        <p>{data[0].Ingredients}</p>
+                                    </div>
+                                    
+                                    <div className="item">
+                                        <label htmlFor="">Expire date :</label>
+                                        <p>{data[0].ExpireDate}</p>
+                                    </div>
+                                    
+                                    <div className="item">
+                                        <label htmlFor="">Alergens :</label>
+                                        <p>{data[0].Alergens} </p>
+                                    </div>
+                                    
+                                    <div className="item">
+                                        <label htmlFor="">Alcohol :</label>
+                                        <p>{data[0].Alcohol}</p>
+                                    </div>
+                                </div>
                             </div>
                         )
                         }
                     </div>
-
                 </div>
             }
         </>

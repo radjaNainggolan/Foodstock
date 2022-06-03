@@ -482,25 +482,72 @@ label{
 .items{
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.in{
+
+  align-items: center;
+  width: 100%;
+}
+
+.add-info{
+  width: 100%;
 }
 
 .in h2{
   font-family: 'Alfa Slab One', cursive;
   color:#125B50;
+  text-align: center;
 }
 
 .item{
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-family: 'Rajdhani', sans-serif;
   font-weight: 700;
-  width: 100%;
+  width: 80%;
   justify-content: space-between;
   color: #FF6363;
-  height: 8vh;
+  
 }
+
+.item label{
+  font-size:1.2rem;
+  color:#125B50;
+  font-weight: bold;
+}
+
+.item p{
+
+  text-align: center;
+}
+
+.add-info h2{
+  font-family: 'Alfa Slab One', cursive;
+  color:#125B50;
+  text-align: center;
+}
+
+.add-info .items{
+  align-items: left ;
+  
+}
+
+.add-info .items .item{
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: .7em;
+}
+
+.add-info .items .item p{
+  text-align: left;
+  margin: 0 0;
+}
+
+
 
 @media screen and (min-width: 600px){
   .products-container{
@@ -663,12 +710,18 @@ label{
 
   .image-and-basic-info{
     
-    flex-direction: row;
+    flex-direction: column;
     width: 50%;
+    align-self: flex-start;
+  }
+
+  .image-and-basic-info img{
+    width: 70%;
   }
 
   .additional-info{
-    width:45%;
+    width:50%;
+    
   }
 
   .product-page{
@@ -676,13 +729,7 @@ label{
     align-items: center;
     
   }
-  .tb{
-    flex-direction: column;
-  }
-  .row{
-    flex-direction: row;
-    width:100%;
-  }
+
 }
 
 
