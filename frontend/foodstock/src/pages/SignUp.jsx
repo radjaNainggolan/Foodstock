@@ -1,5 +1,3 @@
-import { AiOutlineMail } from 'react-icons/ai';
-import {MdPassword} from 'react-icons/md'
 import { useState , useContext} from "react";
 import {useNavigate} from "react-router-dom";
 import { UserContext } from '../contexts/UserContext';
@@ -14,6 +12,8 @@ const SignUp = () => {
     const context = useContext(UserContext);
     const {setUserID, setLogedIn} = context;
 
+    console.log(JSON.parse(window.localStorage.getItem('User')));
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -27,10 +27,9 @@ const SignUp = () => {
         axios.post('http://localhost:4000/signup', user)
         .then(res => {
             console.log(res);
+            window.localStorage.setItem('User',JSON.stringify({userID:res.data.id, token:res.data.token}));
             setUserID(res.data.id);
             setLogedIn(true);
-            window.localStorage.setItem('JWT',res.data.token);
-            console.log(window.localStorage.getItem('JWT'));
         })
         .catch(err => {
             console.log(err);

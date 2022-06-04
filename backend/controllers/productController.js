@@ -60,7 +60,7 @@ const getProductsByCategory = async (req, res) => {
 
     try{
 
-        const [result, metadata] = await sequelize.query('select * '+
+        const [result, metadata] = await sequelize.query('select p.ID, p.CategoryID, p.Name, p.Description, p.Price, p.Energy, p.Fats, p.SaturatedFats, p.Protein, p.Carbonhydrates, p.Sugar, p.Fibers, p.Salt, p.Storage, p.MadeIn, p.Producer, p.Import, p.Ingredients, p.ExpireDate, p.Alergens, p.Alcohol, p.AdditionalInfo, c.CategoryName, i.Src '+
         'from '+
             'Product as p '+
             'inner join '+ 

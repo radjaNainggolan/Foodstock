@@ -7,9 +7,8 @@ import Profile from './pages/Profile';
 import AllProducts from './pages/AllProducts';
 import CategoryProducts from './pages/CategoryProducts';
 import ProductPage from './pages/ProductPage';
+import Home from './pages/Home';
 function App() {
-  
-
   return (
     <Router>
       <UserProvider>
@@ -17,7 +16,7 @@ function App() {
           <NavigationBar></NavigationBar>
           <div className="content">
             <Routes>
-              {/* <Route exact path="/categories" element={<Categories/>}></Route> */}
+              <Route exact path="/" element={<Home/>}></Route>
               <Route exact path="/login" element={<LogIn/>}></Route>
               <Route exact path="/signup" element={<SignUp/>}></Route>
               <Route exact path="/profile/:id" element={<Profile/>}></Route>

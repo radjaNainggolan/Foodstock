@@ -1,13 +1,14 @@
 import { useState , useContext} from "react";
 import {useNavigate} from "react-router-dom";
-import { UserContext } from '../contexts/UserContext';
 import axios from 'axios';
+import {UserContext} from '../contexts/UserContext';
 
 const LogIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const context = useContext(UserContext);
+
     const {setUserID, setLogedIn} = context;
 
     const handleSubmit = (e) => {
@@ -21,9 +22,9 @@ const LogIn = () => {
         axios.post('http://localhost:4000/login', user)
         .then(res => {
             console.log(res);
-            setUserID(res.data.id);
+            window.localStorage.setItem('User',JSON.stringify({userID:res.data.id, token:res.data.token}));
+            setUserID(res.data.ID);
             setLogedIn(true);
-            window.localStorage.setItem('JWT',res.data.token);
         })
         .catch(err => {
             console.log(err);

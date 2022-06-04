@@ -27,7 +27,7 @@ const ProductPage = () => {
                     </div>
                     
                     <div className="additional-info">
-                        <div>
+                        <div className='buttons'>
                             <button onClick={()=> setOpen(true)}>Nutritional values</button>
                             <button onClick={()=> setOpen(false)}>Product info</button>
                         </div>

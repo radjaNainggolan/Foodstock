@@ -12,7 +12,24 @@ const NavigationBar = () => {
     const [catOpen, setCatOpen] = useState(false);
     const [catOpen2, setCatOpen2] = useState(false);
     const context = useContext(UserContext);
-    const {userID, logedIn, setLogedIn} = context;
+    const {userID, logedIn, setLogedIn, setUserID} = context;
+
+    const user = JSON.parse(window.localStorage.getItem('User'));
+    if(user.userID !== "" && user.token !== "")
+    {
+        setLogedIn(true);
+        setUserID(user.userID);
+    }else{
+        setUserID(null);
+        setLogedIn(false);
+    }
+
+    const handleLogOut = () =>{
+        setLogedIn(false);
+        setUserID(null);
+        window.localStorage.setItem('User',JSON.stringify({userID:"", token:""}));
+    }
+
     let {data:categories} = useGet('http://localhost:4000/categories');
     
     return (
@@ -35,7 +52,7 @@ const NavigationBar = () => {
                                 <Link 
                                     to="/" 
                                     className="navbar-btn" 
-                                    onClick={() => {setLogedIn(false); window.localStorage.setItem('JWT','')}}
+                                    onClick={handleLogOut}
                                     >
                                     Log out
                                 </Link>
@@ -62,7 +79,7 @@ const NavigationBar = () => {
                             { logedIn ? 
                             (   <div className="drop-down-menu" >
                                     <Link to={`/profile/${userID}`} className="navbar-btn">Profile</Link>
-                                    <Link to="/" className="navbar-btn" onClick={() => {setLogedIn(false); window.localStorage.setItem('JWT','')}}>Log out</Link>
+                                    <Link to="/" className="navbar-btn" onClick={handleLogOut}>Log out</Link>
                                 </div>
                             ) : (
                                 <div className="drop-down-menu" >
