@@ -2,13 +2,15 @@ import { useState , useContext} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import {UserContext} from '../contexts/UserContext';
+import { useAlert } from "react-alert";
 
 const LogIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const context = useContext(UserContext);
-
+    const alert = useAlert();
+    
     const {setUserID, setLogedIn} = context;
 
     const handleSubmit = (e) => {
@@ -21,17 +23,21 @@ const LogIn = () => {
 
         axios.post('http://localhost:4000/login', user)
         .then(res => {
-            console.log(res);
+            // console.log(res);
             window.localStorage.setItem('User',JSON.stringify({userID:res.data.id, token:res.data.token}));
             setUserID(res.data.ID);
             setLogedIn(true);
+            setEmail('');
+            setPassword('');
+            navigate('/products');           
+            alert.success(res.data.message);
         })
         .catch(err => {
-            console.log(err);
+            setEmail('');
+            setPassword('');
+            alert.error(err.response.data.message);
         });
-        setEmail('');
-        setPassword('');
-        navigate('/');
+        
     } 
 
     return ( 

@@ -1,13 +1,17 @@
-import { useContext, useEffect ,useState } from 'react';
+import { useContext ,useState } from 'react';
 import { UserContext } from '../contexts/UserContext';
 import Fade from 'react-reveal/Fade';
 import MinusButton from './MinusButton';
 import PlusButton from './PlusButton';
+import axios from 'axios';
+import { useAlert } from 'react-alert';
 const Cart = () => {
     const context = useContext(UserContext);
-    const {cartOpen, setCartOpen} = context;
+    const {userID,cartOpen, setCartOpen} = context;
     const [cart, setCart] = useState(JSON.parse(window.localStorage.getItem('products')));
     const [remove, setRemove] = useState(false);
+    const [address, setAddress] = useState('');
+    const alert = useAlert();
     
     const handeRemoveAllItems = () => {
         window.localStorage.removeItem('products');
@@ -16,6 +20,7 @@ const Cart = () => {
 
     const handlePlus = (id) => {
         let cart = JSON.parse(window.localStorage.getItem('products'));
+        console.log(cart);
         let prod = cart.products.find(p => p.ID === id);
         prod.Amount = prod.Amount + 1;
         let index = cart.products.findIndex(p => p.ID === id);
@@ -44,6 +49,34 @@ const Cart = () => {
         cart.total = cart.total - prod.Price;
         window.localStorage.setItem('products',JSON.stringify(cart));
         setCart(cart);
+    }
+
+    const handleOrder = () => {
+        const User = JSON.parse(window.localStorage.getItem('User'));
+        const token = User.token;
+        const cart = JSON.parse(window.localStorage.getItem('products'));
+        const products = cart.products;
+        const total = cart.total;
+        
+        const headers ={
+            JWT:token
+        }
+
+        const obj = {
+            userID,
+            products,
+            address,
+            total
+        }
+        axios.post('http://localhost:4000/createorder',obj,{headers:headers})
+        .then(res => {
+            alert.success(res.data.message);
+            alert.info("delivery will be at your address within an hour")
+            handeRemoveAllItems();
+        })
+        .catch(err => {
+            
+        });
     }
 
     return ( 
@@ -89,7 +122,8 @@ const Cart = () => {
                     {window.localStorage.getItem('products') &&
                         <div className="make-order-container">
                             <p>Total to pay: {JSON.parse(window.localStorage.getItem('products')).total} &#x20AC;</p>
-                            <button className="make-order-btn">Make order</button>
+                            <input type="text" value={address} onChange={(e)=> setAddress(e.target.value)} placeholder='Address'/>
+                            <button onClick={handleOrder} className="make-order-btn">Make order</button>
                         </div>
                     }
                 </div>

@@ -10,7 +10,7 @@ const createOrder = async (req, res) => {
         let [result, metadata] = await sequelize.query(`insert into [Order] values (${userID}, '${address}',${total})`);
         [result, metadata] = await sequelize.query(`select TOP 1 ID from [Order] where [Order].UserID = ${userID} order by [Order].ID desc`);
         
-        let queryString = `insert into OrderProduct (OrderID, ProductID) values `;
+        let queryString = `insert into OrderProduct (OrderID, ProductID, Amount) values `;
         
         for(let i = 0; i < products.length-1; i++) {
             queryString += `(${result[0].ID}, ${products[i].ID}, ${products[i].Amount}),`

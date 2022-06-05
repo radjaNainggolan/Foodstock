@@ -2,7 +2,7 @@ import { useState , useContext} from "react";
 import {useNavigate} from "react-router-dom";
 import { UserContext } from '../contexts/UserContext';
 import axios from 'axios';
-
+import { useAlert } from "react-alert";
 const SignUp = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -11,8 +11,8 @@ const SignUp = () => {
     const navigate = useNavigate();
     const context = useContext(UserContext);
     const {setUserID, setLogedIn} = context;
-
-    console.log(JSON.parse(window.localStorage.getItem('User')));
+    const alert = useAlert();
+    // console.log(JSON.parse(window.localStorage.getItem('User')));
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,12 +30,18 @@ const SignUp = () => {
             window.localStorage.setItem('User',JSON.stringify({userID:res.data.id, token:res.data.token}));
             setUserID(res.data.id);
             setLogedIn(true);
+            setEmail('');
+            setFirstName('');
+            setLastName('');
+            setPassword('');
+            navigate('/products');           
+            alert.success(res.data.message);
         })
         .catch(err => {
-            console.log(err);
+            
+            alert.error(err.response.data.message);
         });
 
-        navigate('/');
     } 
     return (
     <div className="sign-up-container">

@@ -22,16 +22,22 @@ const Profile = () => {
                     </div>
                 
                 }
-                {lastOrder.data &&
-                    <Link to={`/order/:${lastOrder.data[0].orderID}`} className="ord">
-                        <h1>Last Order</h1>
-                        <img  src={lastOrder.data[0].Src}  alt="" />                        
-                        <div>
-                            <h4>Total price: {lastOrder.data[0].Total}&#x20AC;</h4>
-                            <h4>Order ID: {lastOrder.data[0].orderID}</h4>
-                            <h4>Address: {lastOrder.data[0].Address}</h4>
-                        </div>
-                    </Link>
+                {lastOrder.data !== null? 
+                    (
+                        <Link to={`/order/:${lastOrder.data[0].orderID}`} className="ord">
+                            <h1>Last Order</h1>
+                            <img  src={lastOrder.data[0].Src}  alt="" />                        
+                            <div>
+                                <h4>Total price: {lastOrder.data[0].Total}&#x20AC;</h4>
+                                <h4>Order ID: {lastOrder.data[0].orderID}</h4>
+                                <h4>Address: {lastOrder.data[0].Address}</h4>
+                            </div>
+                        </Link>
+
+                    ) : (
+                        <>
+                        </>
+                    )
                 }
             </div>
             <div className="orders">
