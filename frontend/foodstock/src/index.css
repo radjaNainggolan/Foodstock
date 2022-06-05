@@ -10,10 +10,15 @@ body{
   padding:0 0;
 }
 
+html{
+  margin:0 0;
+}
+
 header{
   margin: 0 0;
   position: relative;
   z-index: 10;
+  width: 100%;
 }
 
 
@@ -104,6 +109,10 @@ header{
 
 .burger{  /* burger buttons style*, displayes only under 768px/*/
   margin: 0 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 20%
 }
 
 .fade{ /*div that wraps fade tag*/
@@ -113,7 +122,9 @@ header{
 }
 
 .content{ /*App.js main div that will contain every page that is displayed*/
-  
+  position: absolute;
+  z-index: -1;
+  top: 120px;
 } 
 
 .drop-down-category{
@@ -123,7 +134,7 @@ header{
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  position: relative;
+  
   background: rgba(250, 245, 228, 1);
   margin-top: 0;
   border-radius: .5em;
@@ -257,6 +268,14 @@ label{
   transform: translateY(-10px);
 }
 
+.user-and-last-order{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width:85%;
+}
+
 .profile-container{ /*profile page container*/
   display: flex;
   flex-direction: column;
@@ -270,7 +289,7 @@ label{
 .user-info{
   background:rgba(250, 245, 228, .6);
   border-radius: .5em;
-  width:70%;
+  width:100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -279,6 +298,7 @@ label{
   padding: 2em 0;
   height: 30vh;
   font-family: 'Rajdhani', sans-serif;
+  
 }
 
 .info-container{
@@ -287,9 +307,45 @@ label{
   align-items: center;
 }
 
+.ord{
+  width: 100%;
+  background:rgba(250, 245, 228, .6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: .5em;
+  text-decoration: none;
+  color: #FF6363;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.ord h1{
+  margin: 0 0;
+}
+
+.ord img{
+
+  width: 50%;
+  border-radius: .5em;
+  border: .1em solid #FF6363;
+}
+
+.ord div{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+
+
+
 .products-container{
   margin: 2em 0;
-  background: #FAF5E4;
+  /* background: #FAF5E4; */
   display: grid;
   gap: 2em 2em;
   grid-template-columns: 60%;
@@ -300,8 +356,8 @@ label{
 }
 
 .product-container{
-  /* border: .2em solid rgba(18, 91, 80,.8); */
-  background: rgba(248, 180, 0,.4);
+  border: .2em solid rgba(18, 91, 80,.8);
+  background: #FAF5E4;
   border-radius: .5em;
   min-width: 100%;
   margin: 0 auto;
@@ -391,11 +447,11 @@ label{
 }
 
 .loader{
-  margin: 12em auto;
+  position: static;
+  margin: 1em auto;
   width: 100%;
   display:flex;
   justify-content: space-around;
-  
 }
 
 .product-page{
@@ -612,6 +668,7 @@ label{
 
 .home-text h1{
   font-family: 'Alfa Slab One', cursive;
+  
 }
 
 .home-text h2{
@@ -626,10 +683,11 @@ label{
 .home-buttons{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   width: 70%;
- 
+  margin-top: .5em;
+  padding: 1em 0;
 }
 
 .home-buttons a{
@@ -641,9 +699,155 @@ label{
   font-size: 1.5rem;
   width: 45%;
   text-align: center;
-  
+  transition: border .1s ease-out;
+  margin: .5em 0;
 }
 
+.home-buttons a:hover{
+  border: .1em solid #FF6363;
+
+}
+
+.cart{
+  background: #FAF5E4;
+  position: relative;
+  z-index: 5;
+  /* top: 100px; */
+  float:right;
+  height: 100vh;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  color: black;
+}
+
+.products{
+  height: 80%;
+  overflow-y: scroll;
+}
+
+.cart-header{
+  display: flex;
+  width: 70%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.cart-header h1{
+  font-family: 'Alfa Slab One', cursive;
+  color: #125B50 ;
+}
+
+.make-order-container{
+  display: flex;
+  width: 80%;
+  justify-content: space-evenly;
+  border-top: 1px solid #125B50;
+}
+
+.make-order-container p{
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color:#125B50;
+}
+
+.cart-header button ,
+.make-order-btn{
+  color:#125B50;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.3rem;
+  background: white;
+  border: none;
+  border-radius: .5em;
+  transition: border .1s ease-out;
+}
+
+.cart-header button:hover ,
+.make-order-btn:hover{
+  border: .1em solid #125B50;
+  cursor: pointer;
+}
+
+.cart-product{
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  justify-content: space-between;
+  border: 1px solid #125B50;
+  border-radius: .5em;
+}
+
+.cart-product img{
+  width: 20%;
+  border-radius: .5em;
+}
+
+.cart-product-name{
+  font-family: 'Alfa Slab One', cursive;
+  color:#125B50;
+}
+
+.cart-product-info{
+  display: flex;
+  align-items: center;
+  width: 80%;
+  justify-content: space-evenly;
+}
+
+.cart-product-price{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cart-product-price h3{
+  font-family: 'Alfa Slab One', cursive;
+  color:#125B50;
+}
+
+.cart-product-price h4{
+  font-family: 'Rajdhani', sans-serif;
+  color:#125B50;
+}
+
+.cart-product-price h4 span{
+  font-family: 'Alfa Slab One', cursive;
+  color:#125B50;
+}
+
+.cart-product-btns{
+  display: flex;
+  align-items: center;
+  width: 30%;
+  justify-content: space-evenly;
+}
+
+.cart-product-btns h3{
+  font-family: 'Rajdhani', sans-serif;
+  color:#125B50;
+}
+
+.cart-product-btns button {
+  border-radius: .5em;
+  text-align: center;
+  width:20%;
+  color:#FF6363;
+  font-weight: 700;
+  border:.1em solid #125B50;
+  cursor: pointer;
+  transition: all .2s ease-out;
+}
+
+.cart-product-btns button:active{
+  transform: scale(0.7);
+}
+
+.empty-cart h1{
+  font-family: 'Alfa Slab One', cursive;
+  color:#125B50;
+}
 
 @media screen and (min-width: 600px){
   .products-container{
@@ -716,14 +920,16 @@ label{
   }
   
   .user-info{
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
   }
 
+
   .user-info{
     width: 40%;
-    align-self: flex-start;
+    /* align-self: flex-start; */
     margin-left: 1em;
+    height: inherit;
   }
 
   .products-container{
@@ -755,6 +961,14 @@ label{
     justify-content: space-evenly;
     width: 30%;
     height: 20vh;
+  }
+  .user-and-last-order{
+    flex-direction: row;
+    width: 95%;
+    align-items: center;
+  }
+  .ord{
+    width: 50%;
   }
 }
 
@@ -809,7 +1023,7 @@ label{
     margin-top: 1.5em;
   }
   .user-info{
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
   }
   
@@ -839,7 +1053,13 @@ label{
     align-items: center;
     
   }
+  .user-and-last-order{
+    align-items: center;
+  }
 
+  .cart{
+    width: 40%;
+  }
 }
 
 

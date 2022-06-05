@@ -5,6 +5,7 @@ import Fade from 'react-reveal/Fade';
 import CategoriesLinkList from './CategoriesLinkList';
 import useGet from '../customHooks/useGet';
 import { UserContext } from '../contexts/UserContext';
+import {AiOutlineShoppingCart} from 'react-icons/ai'
 
 
 const NavigationBar = () => {
@@ -12,7 +13,7 @@ const NavigationBar = () => {
     const [catOpen, setCatOpen] = useState(false);
     const [catOpen2, setCatOpen2] = useState(false);
     const context = useContext(UserContext);
-    const {userID, logedIn, setLogedIn, setUserID} = context;
+    const {userID, logedIn, setLogedIn, setUserID, cartOpen, setCartOpen} = context;
 
     const user = JSON.parse(window.localStorage.getItem('User'));
     if(user.userID !== "" && user.token !== "")
@@ -28,6 +29,7 @@ const NavigationBar = () => {
         setLogedIn(false);
         setUserID(null);
         window.localStorage.setItem('User',JSON.stringify({userID:"", token:""}));
+        window.localStorage.removeItem('products');
     }
 
     let {data:categories} = useGet('http://localhost:4000/categories');
@@ -39,12 +41,14 @@ const NavigationBar = () => {
                     <h1 className="navbar-title">Foodstock</h1>
                     <h2 className="navbar-subtitle">Everything you want at your address</h2>
                 </div>
+                
                 <div className="burger">
+                    <AiOutlineShoppingCart size={40} cursor="pointer" onClick={() =>setCartOpen(!cartOpen)} color='#125B50'></AiOutlineShoppingCart>
                     <Hamburger toggled={isOpen} toggle={setOpen} color="#125B50" ></Hamburger>
                 </div>
                 <div className="links">
                     <Link to="/products" className="navbar-btn">All products</Link>
-                    <button className="navbar-btn cat" onClick={()=> setCatOpen2(!catOpen2)}>Categories</button>
+                    <button className="navbar-btn cat" onClick={() => setCatOpen2(!catOpen2)}>Categories</button>
                     <Link to="/" className="navbar-btn">Home</Link>
                     { logedIn ? 
                         (   <>  
@@ -56,6 +60,7 @@ const NavigationBar = () => {
                                     >
                                     Log out
                                 </Link>
+                                <button className="navbar-btn" onClick={() =>setCartOpen(!cartOpen)}>Cart</button>
                             </>
                         ) : (
                             <>
@@ -80,6 +85,7 @@ const NavigationBar = () => {
                             (   <div className="drop-down-menu" >
                                     <Link to={`/profile/${userID}`} className="navbar-btn">Profile</Link>
                                     <Link to="/" className="navbar-btn" onClick={handleLogOut}>Log out</Link>
+                                    
                                 </div>
                             ) : (
                                 <div className="drop-down-menu" >
@@ -94,7 +100,7 @@ const NavigationBar = () => {
                 </Fade>
                 <Fade top when={catOpen2}>
                     {catOpen2 && categories &&
-                        <CategoriesLinkList categories={categories}></CategoriesLinkList>
+                        <CategoriesLinkList  categories={categories}></CategoriesLinkList>
                     }
                 </Fade>
             </div>

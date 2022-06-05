@@ -4,7 +4,7 @@ const Loader = ({loading}) => {
         <>
             {loading &&  
                 <div className="loader">
-                    <Ripples size={300} color="#FF6363"/>
+                    <Ripples size={1000} color="#FF6363"/>
                 </div>
             }
         </>

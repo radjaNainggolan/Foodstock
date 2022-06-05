@@ -8,6 +8,7 @@ import AllProducts from './pages/AllProducts';
 import CategoryProducts from './pages/CategoryProducts';
 import ProductPage from './pages/ProductPage';
 import Home from './pages/Home';
+import Cart from './components/Cart'
 function App() {
   return (
     <Router>
@@ -25,8 +26,7 @@ function App() {
               <Route exact path="/product/:id" element={<ProductPage/>}></Route>
             </Routes>
           </div>
-          <div><h1>Footer</h1></div>
-          
+          <Cart></Cart>
         </div>
       </UserProvider>
     </Router>
