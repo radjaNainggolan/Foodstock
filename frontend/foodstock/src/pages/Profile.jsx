@@ -1,11 +1,18 @@
 import useGet from "../customHooks/useGet";
+import useGetWithHeaders from '../customHooks/useGetWithHeaders.js';
 import {useParams} from 'react-router-dom';
 import {BsPersonCircle} from 'react-icons/bs';
 import { Link } from "react-router-dom";
 const Profile = () => {
     let {id} = useParams();
     
-    let {data, loading, error} = useGet('http://localhost:4000/user/'+id);
+    const User = JSON.parse(window.localStorage.getItem('User'));
+    const token = User.token;
+    const headers ={
+        JWT:token
+    }
+
+    let {data, loading, error} = useGetWithHeaders('http://localhost:4000/user/'+id,headers);
     const lastOrder = useGet('http://localhost:4000/user/'+id+'/order');
     //const allOrders = useGet('http://localhost:4000/user/'+id+'/orders')
     return (  

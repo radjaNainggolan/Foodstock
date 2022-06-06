@@ -7,7 +7,12 @@ const getUser = async (req, res) => {
     try{
         const [result, metadata] = await sequelize.query('select FirstName, LastName,Email from [User] as u where u.ID ='+id);
         console.log(result);
-        res.status(200).json(result);
+        if(result.length > 0){
+
+            res.status(200).json(result);
+        }else{
+            res.status(400).json({message:"User with this id does not exist."});
+        }
     }catch(err){
         console.error(err);
     }

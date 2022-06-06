@@ -14,7 +14,7 @@ const verifyJWT = (req, res, next) => {
             }
         });
     }else{
-        res.status(401).json({message: "You are unauthorized, please sign up."});
+        res.status(401).json({message: "You are unauthorized."});
     }
 }
 
