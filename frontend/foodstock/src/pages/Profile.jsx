@@ -4,15 +4,15 @@ import {useParams} from 'react-router-dom';
 import {BsPersonCircle} from 'react-icons/bs';
 import { Link } from "react-router-dom";
 const Profile = () => {
-    let {id} = useParams();
     
+    let {id} = useParams();
     const User = JSON.parse(window.localStorage.getItem('User'));
     const token = User.token;
     const headers ={
         JWT:token
     }
-
     let {data, loading, error} = useGetWithHeaders('http://localhost:4000/user/'+id,headers);
+    
     const lastOrder = useGet('http://localhost:4000/user/'+id+'/order');
     //const allOrders = useGet('http://localhost:4000/user/'+id+'/orders')
     return (  
@@ -29,20 +29,23 @@ const Profile = () => {
                     </div>
                 
                 }
-                {lastOrder.data !== null? 
+                {lastOrder.data !== null && lastOrder.data.length !== 0 ? 
                     (
-                        <Link to={`/order/:${lastOrder.data[0].orderID}`} className="ord">
+                        <Link to={`/profile/${id}/order/${lastOrder.data[0].OrderID}`} className="ord">
                             <h1>Last Order</h1>
                             <img  src={lastOrder.data[0].Src}  alt="" />                        
                             <div>
                                 <h4>Total price: {lastOrder.data[0].Total}&#x20AC;</h4>
-                                <h4>Order ID: {lastOrder.data[0].orderID}</h4>
+                                <h4>Order ID: {lastOrder.data[0].OrderID}</h4>
                                 <h4>Address: {lastOrder.data[0].Address}</h4>
                             </div>
                         </Link>
 
                     ) : (
                         <>
+                            <div className="substitute">
+                                You haven't made any orders yet
+                            </div>
                         </>
                     )
                 }

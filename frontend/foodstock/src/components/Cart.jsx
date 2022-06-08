@@ -75,7 +75,7 @@ const Cart = () => {
             handeRemoveAllItems();
         })
         .catch(err => {
-            
+            alert.error(err.response.data.message);
         });
     }
 

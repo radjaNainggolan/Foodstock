@@ -1,13 +1,46 @@
 import useGet from "../customHooks/useGet";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Loader from "../components/Loader";
 import {BsCartPlus} from 'react-icons/bs'
+import { UserContext } from "../contexts/UserContext";
+
 const ProductPage = () => {
 
     const {id} = useParams();
     const {data, loading, error} = useGet('http://localhost:4000/products/'+id);
     const [open, setOpen] = useState(true);
+    const context = useContext(UserContext);
+    const {cartOpen, setCartOpen} = context;
+
+
+    let total = 0;
+
+    const addProduct = (product) => {
+        if(window.localStorage.getItem('products') === null){
+            const products = [{ID:product.ID, Src:product.Src, Name:product.Name, Price:product.Price, Amount:1}];
+            total = total + product.Price; 
+            window.localStorage.setItem('products',JSON.stringify({products:products, total:total}));
+            console.log({products:products, total:total});
+            setCartOpen(!cartOpen);
+        }else{
+            let cart = JSON.parse(window.localStorage.getItem('products'));
+            if(cart.products.filter(p => p.ID === product.ID).length > 0){
+               let prod = cart.products.find(p => p.ID === product.ID);
+               prod.Amount = prod.Amount + 1;
+               let index = cart.products.findIndex(p => p.ID === product.ID);
+               cart.products[index] = prod;
+               cart.total = cart.total + product.Price;
+            }else{
+                cart.products.push({ID:product.ID, Src:product.Src, Name:product.Name, Price:product.Price, Amount:1})
+                cart.total = cart.total + product.Price;
+            }
+            console.log(cart);
+            window.localStorage.setItem('products',JSON.stringify(cart));
+            setCartOpen(!cartOpen);
+
+        }    
+    }
 
     return (
         <>
@@ -21,7 +54,7 @@ const ProductPage = () => {
                             <p>{data[0].Description}</p>
                             <div className="price-and-btn">
                                 <h1>{data[0].Price}&#x20AC;</h1>
-                                <button><BsCartPlus size={20}></BsCartPlus></button>
+                                <button onClick={()=> addProduct(data[0])}><BsCartPlus size={20}></BsCartPlus></button>
                             </div>
                         </div>
                     </div>

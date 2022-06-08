@@ -31,7 +31,6 @@ sequelize.authenticate()
 
 
 app.use('/products', productRoutes);
-
 app.use(logInAndSignUpRoutes);
 app.use(orderRoutes);
 app.use(categoryRoutes);

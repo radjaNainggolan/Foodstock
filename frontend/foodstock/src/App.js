@@ -12,7 +12,8 @@ import Cart from './components/Cart'
 import {  Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 import {options} from './contexts/AlertOptions';
-
+import Footer from './components/Footer';
+import LastOrder from './pages/LastOrder';
 
 function App() {
   return (
@@ -30,10 +31,12 @@ function App() {
                 <Route exact path="/products" element={<AllProducts/>}></Route>
                 <Route exact path="/products/category/:id" element={<CategoryProducts/>}></Route>
                 <Route exact path="/product/:id" element={<ProductPage/>}></Route>
+                <Route exact path="/profile/:id/order/:orderID" element={<LastOrder/>}></Route>
               </Routes>
+            <Footer></Footer>
             </div>
             <Cart></Cart>
-              </AlertProvider>
+            </AlertProvider>
           </div>
       </UserProvider>
     </Router>

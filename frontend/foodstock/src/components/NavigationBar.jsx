@@ -43,7 +43,7 @@ const NavigationBar = () => {
                 </div>
                 
                 <div className="burger">
-                    <AiOutlineShoppingCart size={40} cursor="pointer" onClick={() =>setCartOpen(!cartOpen)} color='#125B50'></AiOutlineShoppingCart>
+                    {logedIn && <AiOutlineShoppingCart size={40} cursor="pointer" onClick={() =>setCartOpen(!cartOpen)} color='#125B50'></AiOutlineShoppingCart>}
                     <Hamburger toggled={isOpen} toggle={setOpen} color="#125B50" ></Hamburger>
                 </div>
                 <div className="links">

@@ -16,7 +16,8 @@ html{
 
 header{
   margin: 0 0;
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 10;
   width: 100%;
 }
@@ -124,7 +125,9 @@ header{
 .content{ /*App.js main div that will contain every page that is displayed*/
   position: absolute;
   z-index: -1;
-  top: 120px;
+  top: 15%;
+  
+  margin: 1em 0;
   align-items: center;
   width: 100%;
 } 
@@ -348,7 +351,7 @@ label{
 
 
 .products-container{
-  margin: 2em 0;
+  margin: 0 0;
   /* background: #FAF5E4; */
   display: grid;
   gap: 2em 2em;
@@ -861,6 +864,113 @@ label{
   color:#125B50;
 }
 
+.footer{
+  position: absolute;
+  top: 105%;
+  width: 100%;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: #FAF5E4;
+  color:#125B50;
+  font-family: 'Rajdhani', sans-serif;
+  padding-bottom: 1em;
+
+}
+
+.footer-text{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.about{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.abt-links{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+  justify-content: space-between;
+}
+
+.abt-links a{
+  text-decoration: none;
+  color:#125B50;
+  font-weight: bold;
+  height: 5vh;
+}
+
+.find-us{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.footer-icons{
+  width:70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+.footer-icons div{
+  width: 100%;
+}
+
+.footer-icons svg:hover{
+  cursor: pointer;
+}
+
+.icn {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.icn div{
+  width: 100%;
+  /* display: flex; */
+  align-items: center;
+  padding: 0 0;
+  text-align: center;
+ /* justify-content: space-around; */
+}
+ 
+.substitute {
+  width: 30%;
+  text-align: center;
+  color:#125B50;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 2rem;
+  width: 50%;
+}
+
+
+
+
+.ord-info{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  color:#125B50;
+  font-family: 'Alfa Slab One', cursive;
+}
+
 @media screen and (min-width: 600px){
   .products-container{
     grid-template-columns: 40% 40%;
@@ -982,6 +1092,30 @@ label{
   .ord{
     width: 50%;
   }
+  .footer-text{
+    flex-direction: row;
+  }
+
+  
+  .footer-text div{
+    width: 30%;
+  }
+  .icn{
+    width:100%;
+  }
+
+  .icn div{
+    width: 100%;
+  }
+
+  .footer-icons{
+    width: 30%;
+  }
+
+  .ord-info{
+    flex-direction: row;
+  }
+
 }
 
 @media screen and (min-width: 992px) {
