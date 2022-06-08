@@ -4,26 +4,26 @@ import { useState, useContext } from "react";
 import Loader from "../components/Loader";
 import {BsCartPlus} from 'react-icons/bs'
 import { UserContext } from "../contexts/UserContext";
-
+import { useAlert } from "react-alert";
 const ProductPage = () => {
 
     const {id} = useParams();
     const {data, loading, error} = useGet('http://localhost:4000/products/'+id);
     const [open, setOpen] = useState(true);
     const context = useContext(UserContext);
-    const {cartOpen, setCartOpen} = context;
-
+    const {cartOpen, setCartOpen, logedIn} = context;
+    const alert = useAlert();
 
     let total = 0;
 
     const addProduct = (product) => {
-        if(window.localStorage.getItem('products') === null){
+        if(window.localStorage.getItem('products') === null && logedIn){
             const products = [{ID:product.ID, Src:product.Src, Name:product.Name, Price:product.Price, Amount:1}];
             total = total + product.Price; 
             window.localStorage.setItem('products',JSON.stringify({products:products, total:total}));
             console.log({products:products, total:total});
             setCartOpen(!cartOpen);
-        }else{
+        }else if(window.localStorage.getItem('products') !== null && logedIn){
             let cart = JSON.parse(window.localStorage.getItem('products'));
             if(cart.products.filter(p => p.ID === product.ID).length > 0){
                let prod = cart.products.find(p => p.ID === product.ID);
@@ -39,6 +39,8 @@ const ProductPage = () => {
             window.localStorage.setItem('products',JSON.stringify(cart));
             setCartOpen(!cartOpen);
 
+        }else{
+            alert.info('Sign up or log in if you already have an account');
         }    
     }
 
